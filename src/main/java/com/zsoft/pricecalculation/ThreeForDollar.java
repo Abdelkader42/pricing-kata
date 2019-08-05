@@ -2,15 +2,14 @@ package com.zsoft.pricecalculation;
 
 import com.zsoft.product.Product;
 
-public class ThreeForDollar implements CalculatePrice {
+public class ThreeForDollar implements CalculatePriceSameUnit {
 
-    public double applyPriceCalculation(Product product) {
+    public double applyPriceCalculation(Product product, int quantity) {
 
-        int quantity = product.getQuantity();
-        int qt = quantity / 3;
-        int modQuantity = quantity % 3;
+        int qt = quantity / 3; // qt c'est le nombre de groupe de trois
+        int modQuantity = quantity % 3; // modQuantity c'est la quantité qui reste après le regrouppement
 
-       double finalPrice = (1 * qt + product.getPrice()*modQuantity)/quantity;
+        double finalPrice = ( qt + product.getPrice() * modQuantity ) / quantity;
 
         return finalPrice;
     }
