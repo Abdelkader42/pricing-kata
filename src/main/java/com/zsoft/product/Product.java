@@ -1,4 +1,4 @@
-package com.zsoft.entity;
+package com.zsoft.product;
 
 public class Product {
     private String name;
@@ -9,11 +9,10 @@ public class Product {
     public Product() {
         }
 
-    public Product(String name, int quantity, double price, boolean isDiscount) {
+    public Product(String name, int quantity, double price) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
-        this.isDiscount = isDiscount;
     }
 
     public String getName() {
@@ -40,11 +39,4 @@ public class Product {
         this.price = price;
     }
 
-    public boolean isDiscount() {
-        return isDiscount;
-    }
-
-    public void setDiscount(boolean discount) {
-        isDiscount = discount;
-    }
 }

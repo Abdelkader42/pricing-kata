@@ -1,7 +1,7 @@
-package com.zsoft.discount;
+package com.zsoft.pricecalculation;
 
 import com.zsoft.product.Product;
 
-public interface Discount {
-    double applyDiscount(Product product);
+public interface CalculatePrice {
+    double applyPriceCalculation(Product product);
 }

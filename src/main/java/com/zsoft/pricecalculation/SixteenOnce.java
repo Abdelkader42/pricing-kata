@@ -1,9 +1,9 @@
-package com.zsoft.discount;
+package com.zsoft.pricecalculation;
 
 import com.zsoft.product.Product;
 
-public class SixteenOnce implements Discount {
-    public double applyDiscount(Product product) {
+public class SixteenOnce implements CalculatePrice {
+    public double applyPriceCalculation(Product product) {
         double finalPrice = product.getPrice()/16;
         return finalPrice;
     }

@@ -1,19 +1,17 @@
-package com.zsoft.discount;
+package com.zsoft.pricecalculation;
 
 import com.zsoft.product.Product;
 
-public class ThreeForDollar implements Discount {
+public class ThreeForDollar implements CalculatePrice {
 
-    public double applyDiscount(Product product) {
+    public double applyPriceCalculation(Product product) {
 
-        double finalPrice = product.getPrice();
         int quantity = product.getQuantity();
+        int qt = quantity / 3;
+        int modQuantity = quantity % 3;
 
-        if (product.isDiscount() == true) {
-            int qt = quantity / 3;
-            int modQuantity = quantity % 3;
-            finalPrice = (1 * qt + product.getPrice()*modQuantity)/quantity;
-        }
+       double finalPrice = (1 * qt + product.getPrice()*modQuantity)/quantity;
+
         return finalPrice;
     }
 }

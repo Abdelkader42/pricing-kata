@@ -1,19 +1,16 @@
-package com.zsoft.discount;
+package com.zsoft.pricecalculation;
 
 import com.zsoft.product.Product;
 
-public class ThirdFree implements Discount {
+public class ThirdFree implements CalculatePrice {
 
-    public double applyDiscount(Product product) {
+    public double applyPriceCalculation(Product product) {
 
-        double finalPrice = product.getPrice();
         int quantity = product.getQuantity();
+        int qt = quantity/3;
 
-        if (product.isDiscount() == true){
-            int qt = quantity/3;
+        double finalPrice = (product.getPrice()*quantity - product.getPrice()*qt)/quantity;
 
-            finalPrice = (product.getPrice()*quantity - product.getPrice()*qt)/quantity;
-        }
         return finalPrice;
     }
 }
