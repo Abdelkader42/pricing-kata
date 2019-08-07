@@ -1,8 +1,8 @@
-package com.zsoft.pricecalculation;
+package com.zsoft.service;
 
-import com.zsoft.product.Product;
+import com.zsoft.entity.Product;
 
-public class ThirdFree implements CalculatePriceSameUnit {
+public class ThirdFree implements DiscountPriceCalculation {
 
     public double applyPriceCalculation(Product product, int quantity) {
 

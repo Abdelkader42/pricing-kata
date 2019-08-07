@@ -1,4 +1,4 @@
-package com.zsoft.product;
+package com.zsoft.entity;
 
 public class Product {
     private String name;

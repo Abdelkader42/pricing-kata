@@ -1,6 +1,6 @@
-package com.zsoft.pricecalculation;
+package com.zsoft.service;
 
-import com.zsoft.product.Product;
+import com.zsoft.entity.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ public class PriceCalculationTest {
 
         Product phone = new Product("phone",12.0);
         Product phone1 = new Product("phone",12.0);
-        CalculatePriceSameUnit thirdFree = new ThirdFree();
+        DiscountPriceCalculation thirdFree = new ThirdFree();
 
         double finalPrice = thirdFree.applyPriceCalculation(phone,5);
         double finalPrice1 = thirdFree.applyPriceCalculation(phone1,6);
@@ -24,7 +24,7 @@ public class PriceCalculationTest {
 
         Product pen = new Product("pen",0.5);
         Product pen1 = new Product("pen",0.5);
-        CalculatePriceSameUnit threeForDollar = new ThreeForDollar();
+        DiscountPriceCalculation threeForDollar = new ThreeForDollar();
 
         double finalPrice = threeForDollar.applyPriceCalculation(pen,5);
         double finalPrice1 = threeForDollar.applyPriceCalculation(pen1,6);
@@ -35,14 +35,17 @@ public class PriceCalculationTest {
     }
 
     @Test
-    public void pound_ounce_test(){
+    public void weight_price_calculation_test(){
 
-        Product corn = new Product("corn",32);
-        PoundOunce poundOunce = new PoundOunce();
+        WeightProduct corn = new WeightProduct("corn",10, WeightUnit.POUND);
 
-        double finalPrice = poundOunce.applyPriceCalculation(corn,"Ounce");
+        Weight weight = new Weight(32,WeightUnit.OUNCE);
 
-        Assertions.assertEquals(2, finalPrice);
+        WeightPriceCalculation weightPriceCalculation = new WeightPriceCalculation();
+
+        double finalPrice = weightPriceCalculation.applyPriceCalculation(corn,weight);
+
+        Assertions.assertEquals(20, finalPrice);
 
 
     }
