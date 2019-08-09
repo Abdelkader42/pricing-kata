@@ -1,21 +1,27 @@
 package com.zsoft.service;
 
+import com.zsoft.entity.ItemProduct;
 import com.zsoft.entity.Product;
+import com.zsoft.entity.Quantity;
 
-public class ThreeForDollar implements DiscountPriceCalculation {
+public class ThreeForDollar implements DiscountCalculationItem {
 
     /**
      Apply discount of three for one Euro
      @param product Product
      @param quantity  Quantity
-     @return price in Euro after applying discount of three for one Euro
+     @return total price in Euro after applying discount of three for one Euro
      */
-    public double applyPriceCalculation(Product product, int quantity) {
+    public double applyPriceCalculation(ItemProduct product, Quantity quantity) {
 
-        int qt = quantity / 3;
-        int modQuantity = quantity % 3;
+        // create qt, qt is the number of groups of 3 items
+        int qt = quantity.getValue() / 3;
 
-        double finalPrice = ( qt + product.getPrice() * modQuantity ) / quantity;
+        // modQuantity is the items that are not discounted
+        int modQuantity = quantity.getValue() % 3;
+
+        // finalPrice is the total price after discount
+        double finalPrice = qt + product.getPrice() * modQuantity;
 
         return finalPrice;
     }

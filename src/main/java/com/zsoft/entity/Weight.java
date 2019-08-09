@@ -10,7 +10,7 @@ public class Weight{
     public Weight() {
     }
 
-    public Weight(int value, WeightUnit weightUnit) {
+    public Weight(double value, WeightUnit weightUnit) {
         this.value = value;
         this.weightUnit = weightUnit;
     }
@@ -19,7 +19,7 @@ public class Weight{
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
 
@@ -29,27 +29,5 @@ public class Weight{
 
     public void setWeightUnit(WeightUnit weightUnit) {
         this.weightUnit = weightUnit;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Weight weight = (Weight) o;
-        return Double.compare(weight.value, value) == 0 &&
-                weightUnit == weight.weightUnit;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value, weightUnit);
-    }
-
-    @Override
-    public String toString() {
-        return "Weight{" +
-                "value=" + value +
-                ", weightUnit=" + weightUnit +
-                '}';
     }
 }

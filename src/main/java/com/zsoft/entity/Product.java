@@ -2,7 +2,7 @@ package com.zsoft.entity;
 
 import java.util.Objects;
 
-public class Product {
+public abstract class Product {
     private String name;
     private double price;
 

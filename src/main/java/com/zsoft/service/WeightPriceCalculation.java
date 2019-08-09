@@ -4,7 +4,7 @@ import com.zsoft.entity.Weight;
 import com.zsoft.entity.WeightProduct;
 import com.zsoft.entity.WeightUnit;
 
-public class WeightPriceCalculation {
+public class WeightPriceCalculation implements PriceCalculationWeight {
     /**
      * Calculate the price of the given weight
      * @param weightProduct Product witch measured by weight
