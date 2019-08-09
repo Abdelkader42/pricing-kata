@@ -1,22 +1,22 @@
 package com.zsoft.service;
 
-import com.zsoft.entity.ItemProduct;
+import com.zsoft.entity.ProductListing;
 import com.zsoft.entity.Quantity;
 
-public class ThirdFree implements DiscountCalculationItem {
+public class ThirdFree implements PriceCalculation {
 
     /**
      Apply discount of buy tow get one free
-     @param product Product
+     @param itemProduct Product
      @param quantity  Quantity
      @return price in Euro after applying discount of buy tow get one free
      */
-    public double applyPriceCalculation(ItemProduct product, Quantity quantity) {
+    public double applyPriceCalculation(ProductListing itemProduct, Quantity quantity) {
         // create freeQuantity, freeQuantity is the number of groups of 3 items
-        int freeQuantity = quantity.getValue() / 3;
+        int freeQuantity = (int) quantity.getValue() / 3;
 
         // finalPrice is the total price after discount
-        double finalPrice = (product.getPrice()*quantity.getValue() - product.getPrice()*freeQuantity );
+        double finalPrice = (itemProduct.getPrice()*quantity.getValue() - itemProduct.getPrice()*freeQuantity );
 
         return finalPrice;
     }

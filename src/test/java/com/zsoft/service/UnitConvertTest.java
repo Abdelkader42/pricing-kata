@@ -9,7 +9,7 @@ public class UnitConvertTest {
     @Test
     public void toPound_test(){
 
-        double weight = UnitConvert.toPound(new Weight(32,WeightUnit.OUNCE));
+        double weight = UnitConvert.toPound(new Quantity(32,WeightUnit.OUNCE));
 
         Assertions.assertEquals(2,weight,Double.MIN_VALUE);
     }
@@ -17,7 +17,7 @@ public class UnitConvertTest {
     @Test
     public void toOunce_test(){
 
-        double weight = UnitConvert.toOunce(new Weight(10,WeightUnit.OUNCE));
+        double weight = UnitConvert.toOunce(new Quantity(10,WeightUnit.OUNCE));
 
         Assertions.assertEquals(160,weight,Double.MIN_VALUE);
     }
@@ -25,10 +25,10 @@ public class UnitConvertTest {
     @Test
     public void convert_test(){
 
-        WeightProduct weightProduct1 = new WeightProduct("corn",10,WeightUnit.OUNCE);
+        ProductListing weightProduct1 = new ProductListing(new Product("corn"),Type.WEIGHT,WeightUnit.OUNCE,10);
 
-        Weight weight = new Weight(12,WeightUnit.OUNCE);
-        Weight weight1 = new Weight(2,WeightUnit.POUND);
+        Quantity weight = new Quantity(12,WeightUnit.OUNCE);
+        Quantity weight1 = new Quantity(2,WeightUnit.POUND);
 
        double weightConverted = UnitConvert.convert(weight,weightProduct1.getWeightUnit());
        double weightConverted1 = UnitConvert.convert(weight1,weightProduct1.getWeightUnit());

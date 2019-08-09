@@ -1,6 +1,6 @@
 package com.zsoft.service;
 
-import com.zsoft.entity.Weight;
+import com.zsoft.entity.Quantity;
 import com.zsoft.entity.WeightUnit;
 
 
@@ -14,7 +14,7 @@ public class  UnitConvert {
      * @param productWeightUnit the weight unit of the product price
      * @return the converted weight
      * */
-    public static double convert(Weight inputWeight, WeightUnit productWeightUnit){
+    public static double convert(Quantity inputWeight, WeightUnit productWeightUnit){
 
         if(inputWeight.getWeightUnit() == WeightUnit.OUNCE && productWeightUnit == WeightUnit.POUND){
             return toPound(inputWeight);
@@ -30,7 +30,7 @@ public class  UnitConvert {
      * @param weight weight in Ounce
      * @return weight in Pound
      * */
-    public static double toPound(Weight weight){
+    public static double toPound(Quantity weight){
         return weight.getValue() / 16;
     }
 
@@ -39,7 +39,7 @@ public class  UnitConvert {
      * @param weight weight in Pound
      * @return weight in Ounce
      * */
-    public static double toOunce(Weight weight){
+    public static double toOunce(Quantity weight){
         return weight.getValue() * 16;
     }
 }

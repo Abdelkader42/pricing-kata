@@ -1,17 +1,17 @@
 package com.zsoft.service;
 
-import com.zsoft.entity.Weight;
-import com.zsoft.entity.WeightProduct;
+import com.zsoft.entity.ProductListing;
+import com.zsoft.entity.Quantity;
 import com.zsoft.entity.WeightUnit;
 
-public class WeightPriceCalculation implements PriceCalculationWeight {
+public class WeightPriceCalculation implements PriceCalculation {
     /**
      * Calculate the price of the given weight
      * @param weightProduct Product witch measured by weight
      * @param weight weight given by the client
      * @return the price of the given weight
      * */
-    public double applyPriceCalculation(WeightProduct weightProduct, Weight weight) {
+    public double applyPriceCalculation(ProductListing weightProduct, Quantity weight) {
 
         WeightUnit weightUnitProduct = weightProduct.getWeightUnit();
 
