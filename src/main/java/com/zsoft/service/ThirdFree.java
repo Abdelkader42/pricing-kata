@@ -1,23 +1,29 @@
 package com.zsoft.service;
 
+import com.zsoft.entity.CartLine;
 import com.zsoft.entity.ProductListing;
 import com.zsoft.entity.Quantity;
+import com.zsoft.entity.Type;
+
+import javax.swing.*;
 
 public class ThirdFree implements PriceCalculation {
 
-    /**
-     Apply discount of buy tow get one free
-     @param itemProduct Product
-     @param quantity  Quantity
-     @return price in Euro after applying discount of buy tow get one free
-     */
-    public double applyPriceCalculation(ProductListing itemProduct, Quantity quantity) {
+    @Override
+    public double applyPriceCalculation(CartLine cartLine) {
         // create freeQuantity, freeQuantity is the number of groups of 3 items
+        Quantity quantity = cartLine.getQuantity();
+        ProductListing productListing = cartLine.getProductListing();
+        if (productListing.getType() != this.getType()) {
+            throw new IllegalArgumentException("Third free discount can't be applied to product listing of type : " + productListing.getType());
+        }
         int freeQuantity = (int) quantity.getValue() / 3;
-
         // finalPrice is the total price after discount
-        double finalPrice = (itemProduct.getPrice()*quantity.getValue() - itemProduct.getPrice()*freeQuantity );
+        return productListing.getPrice() * quantity.getValue() - productListing.getPrice() * freeQuantity;
+    }
 
-        return finalPrice;
+    @Override
+    public Type getType() {
+        return Type.UNIT;
     }
 }

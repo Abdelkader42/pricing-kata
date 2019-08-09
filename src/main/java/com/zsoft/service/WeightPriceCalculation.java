@@ -1,23 +1,29 @@
 package com.zsoft.service;
 
-import com.zsoft.entity.ProductListing;
-import com.zsoft.entity.Quantity;
-import com.zsoft.entity.WeightUnit;
+import com.zsoft.entity.*;
 
 public class WeightPriceCalculation implements PriceCalculation {
     /**
      * Calculate the price of the given weight
-     * @param weightProduct Product witch measured by weight
-     * @param weight weight given by the client
+     *
+     * @param cartLine
      * @return the price of the given weight
-     * */
-    public double applyPriceCalculation(ProductListing weightProduct, Quantity weight) {
+     */
+    @Override
+    public double applyPriceCalculation(CartLine cartLine) {
 
-        WeightUnit weightUnitProduct = weightProduct.getWeightUnit();
+        WeightUnit weightUnitProduct = cartLine.getProductListing().getWeightUnit();
+        Quantity weight = cartLine.getQuantity();
+        double price = cartLine.getProductListing().getPrice();
 
         // create weightConverted witch is the weight after conversion if necessary
-        double  weightConverted = UnitConvert.convert(weight,weightUnitProduct);
+        double weightConverted = UnitConvert.convert(weight, weightUnitProduct);
 
-        return  weightProduct.getPrice() * weightConverted;
+        return price * weightConverted;
+    }
+
+    @Override
+    public Type getType() {
+        return Type.WEIGHT;
     }
 }

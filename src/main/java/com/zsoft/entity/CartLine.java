@@ -4,14 +4,14 @@ import com.zsoft.service.WeightPriceCalculation;
 
 public class CartLine {
 
-    ProductListing product;
+    ProductListing productListing;
     Quantity quantity;
 
     public CartLine() {
     }
 
-    public CartLine(ProductListing product, Quantity quantity) {
-        this.product = product;
+    public CartLine(ProductListing productListing, Quantity quantity) {
+        this.productListing = productListing;
         this.quantity = quantity;
     }
 
@@ -22,21 +22,21 @@ public class CartLine {
 
     public double calculateSubTotal(){
 
-        if (product.getType() == Type.WEIGHT){
+        if (productListing.getType() == Type.WEIGHT){
 
             WeightPriceCalculation weightPriceCalculation = new WeightPriceCalculation();
-            return weightPriceCalculation.applyPriceCalculation(this.product,this.quantity);
+            return weightPriceCalculation.applyPriceCalculation(this);
 
             }
-        return this.product.getPrice() * this.quantity.getValue();
+        return this.productListing.getPrice() * this.quantity.getValue();
         }
 
-    public ProductListing getProduct() {
-        return product;
+    public ProductListing getProductListing() {
+        return productListing;
     }
 
-    public void setProduct(ProductListing product) {
-        this.product = product;
+    public void setProductListing(ProductListing productListing) {
+        this.productListing = productListing;
     }
 
     public Quantity getQuantity() {

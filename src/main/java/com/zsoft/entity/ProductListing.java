@@ -1,5 +1,7 @@
 package com.zsoft.entity;
 
+import java.util.Objects;
+
 public class ProductListing {
 
     private Product product;
@@ -47,5 +49,20 @@ public class ProductListing {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductListing that = (ProductListing) o;
+        return  Objects.equals(product, that.product) &&
+                type == that.type &&
+                weightUnit == that.weightUnit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(product, type);
     }
 }
